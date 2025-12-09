@@ -1,6 +1,6 @@
-// src/Components/SearchBar.tsx
-import type { ChangeEvent } from 'react';
-import { Search, Filter } from 'lucide-react';
+// src/components/SearchBar.tsx
+import type { ChangeEvent } from "react";
+import { Search, Filter } from "lucide-react";
 
 export interface SearchBarProps {
   value: string;
@@ -15,8 +15,8 @@ export interface SearchBarProps {
 export function SearchBar({
   value,
   onChange,
-  placeholder = 'Search...',
-  filterLabel = 'Filter',
+  placeholder = "Search...",
+  filterLabel = "Filter",
   onFilterClick,
 }: SearchBarProps) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

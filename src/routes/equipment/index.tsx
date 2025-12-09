@@ -1,19 +1,21 @@
-// src/routes/equipment.index.tsx
-import { useState } from 'react';
-import { createFileRoute } from '@tanstack/react-router';
-import { PageHeader } from '../Components/Layout/PageHeader';
-import { PageSection } from '../Components/Layout/PageSection';
-import { PrimaryButton } from '../Components/Ui/PrimaryButton';
-import { SearchBar } from '../Components/SearchBar';
-import { Plus } from 'lucide-react';
+import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { PageHeader } from "../../components/layout/PageHeader";
+import { PageSection } from "../../components/layout/PageSection";
+import { PrimaryButton } from "../../components/ui/PrimaryButton";
+import { SearchBar } from "../../components/SearchBar";
+import { Plus } from "lucide-react";
 
-export const Route = createFileRoute('/Equipment/')({
+export const Route = createFileRoute("/equipment/")({
   component: EquipmentListRoute,
+  staticData: {
+    title: "EquipmentList",
+  },
 });
 
 function EquipmentListRoute() {
   const totalItems = 20; // mock data
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -43,7 +45,7 @@ function EquipmentListRoute() {
           placeholder="Search equipment..."
           filterLabel="Category"
           onFilterClick={() => {
-            console.log('open category filter');
+            console.log("open category filter");
           }}
         />
       </div>
@@ -51,7 +53,8 @@ function EquipmentListRoute() {
       {/* 3) กรอบ content จริงอยู่ข้างล่าง */}
       <PageSection>
         <p className="text-sm text-gray-700">
-          (เดี๋ยวใช้ searchText = "{searchText}" ไป filter ตารางอุปกรณ์จริง ๆ อีกที)
+          (เดี๋ยวใช้ searchText = "{searchText}" ไป filter ตารางอุปกรณ์จริง ๆ
+          อีกที)
         </p>
       </PageSection>
     </div>

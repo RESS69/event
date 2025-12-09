@@ -1,13 +1,15 @@
-// src/routes/package.index.tsx
-import { createFileRoute } from '@tanstack/react-router';
-import { PageHeader } from '../Components/Layout/PageHeader';
-import { PageSection } from '../Components/Layout/PageSection';
-import { PrimaryButton } from '../Components/Ui/PrimaryButton';
-import { SearchBar } from '../Components/SearchBar';
-import { Plus } from 'lucide-react';
+import { createFileRoute } from "@tanstack/react-router";
+import { PageHeader } from "../../components/layout/PageHeader";
+import { PageSection } from "../../components/layout/PageSection";
+import { PrimaryButton } from "../../components/ui/PrimaryButton";
+import { SearchBar } from "../../components/SearchBar";
+import { Plus } from "lucide-react";
 
-export const Route = createFileRoute('/package/')({
+export const Route = createFileRoute("/package/")({
   component: PackageListRoute,
+  staticData: {
+    title: "PackageList",
+  },
 });
 
 function PackageListRoute() {

@@ -1,14 +1,22 @@
-// src/Components/Sidebar.tsx
-import React from 'react';
+import { SidebarItem } from "./SidebarItem";
+import {
+  Briefcase,
+  Building2,
+  CalendarDays,
+  LayoutDashboard,
+  Package,
+  Users,
+  Wrench,
+} from "lucide-react";
 
 export type SidebarView =
-  | 'dashboard'
-  | 'event'
-  | 'company'
-  | 'staff'
-  | 'outsource'
-  | 'equipment'
-  | 'package';
+  | "dashboard"
+  | "event"
+  | "company"
+  | "staff"
+  | "outsource"
+  | "equipment"
+  | "package";
 
 export interface SidebarProps {
   currentView: SidebarView;
@@ -17,35 +25,26 @@ export interface SidebarProps {
   onClose?: () => void;
 }
 
-const MENU_ITEMS: { id: SidebarView; label: string }[] = [
-  { id: 'dashboard', label: 'Dashboard' },
-  { id: 'event', label: 'Event' },
-  { id: 'company', label: 'Company' },
-  { id: 'staff', label: 'Staff' },
-  { id: 'outsource', label: 'Outsource' },
-  { id: 'equipment', label: 'Equipment' },
-  { id: 'package', label: 'Package' },
-];
+// const MENU_ITEMS: { id: SidebarView; label: string }[] = [
+//   { id: "dashboard", label: "Dashboard" },
+//   { id: "event", label: "Event" },
+//   { id: "company", label: "Company" },
+//   { id: "staff", label: "Staff" },
+//   { id: "outsource", label: "Outsource" },
+//   { id: "equipment", label: "Equipment" },
+//   { id: "package", label: "Package" },
+// ];
 
-export const Sidebar: React.FC<SidebarProps> = ({
-  currentView,
-  onNavigate,
-  isOpen = true,
-  onClose,
-}) => {
-  if (!isOpen) return null;
-
+export const Sidebar = () => {
   return (
-    <aside className="hidden h-screen w-64 flex-shrink-0 flex-col border-r border-gray-200 bg-white lg:flex">
+    <aside className="hidden h-screen w-64 shrink-0 flex-col border-r border-gray-200 bg-white lg:flex">
       {/* Logo */}
-      <div className="flex items-center gap-3 border-b px-6 py-4">
+      <div className="flex items-center gap-3 min-h-22 border-b px-6 py-6 border-gray-200">
         <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-blue-600 text-sm font-semibold text-white">
           EF
         </div>
         <div className="flex flex-col">
-          <span className="text-sm font-semibold text-gray-900">
-            EventFlow
-          </span>
+          <span className="text-sm font-semibold text-gray-900">EventFlow</span>
           <span className="text-xs text-gray-500">Event Management</span>
         </div>
       </div>
@@ -56,33 +55,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
           Event Management
         </div>
 
-        <div className="space-y-1">
-          {MENU_ITEMS.map((item) => {
-            const isActive = currentView === item.id;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => onNavigate(item.id)}
-                className={[
-                  'flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left transition-colors',
-                  isActive
-                    ? 'bg-blue-50 text-blue-700 font-medium'
-                    : 'text-gray-700 hover:bg-gray-50',
-                ].join(' ')}
-              >
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-xs">
-                  {item.label[0]}
-                </span>
-                <span>{item.label}</span>
-              </button>
-            );
-          })}
-        </div>
+        <SidebarItem to="/" label="Dashboard" icon={LayoutDashboard} />
+        <SidebarItem to="/event" label="Event" icon={CalendarDays} />
+        <SidebarItem to="/company" label="Company" icon={Building2} />
+        <SidebarItem to="/staff" label="Staff" icon={Users} />
+        <SidebarItem to="/outsource" label="Outsource" icon={Briefcase} />
+        <SidebarItem to="/equipment" label="Equipment" icon={Wrench} />
+        <SidebarItem to="/package" label="Package" icon={Package} />
       </nav>
 
       {/* โปรไฟล์ล่าง */}
-      <div className="border-t px-4 py-4">
+      <div className="border-t border-gray-200 px-4 py-4">
         <div className="flex items-center gap-3 rounded-2xl bg-gray-50 px-3 py-2">
           <div className="h-8 w-8 rounded-full bg-gray-300" />
           <div className="flex flex-col">
@@ -95,7 +78,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </div>
 
-        {onClose && (
+        {/* {onClose && (
           <button
             type="button"
             onClick={onClose}
@@ -103,7 +86,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           >
             Close menu
           </button>
-        )}
+        )} */}
       </div>
     </aside>
   );

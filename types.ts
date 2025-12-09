@@ -1,19 +1,38 @@
-
-
 export enum RoleType {
-  HOST = 'Host',
-  IT_SUPPORT = 'IT Support',
-  MANAGER = 'Manager',
-  COORDINATOR = 'Coordinator',
-  SECURITY = 'Security'
+  HOST = "Host",
+  IT_SUPPORT = "IT Support",
+  MANAGER = "Manager",
+  COORDINATOR = "Coordinator",
+  SECURITY = "Security",
 }
 
 export enum StaffType {
-  INTERNAL = 'Internal',
-  OUTSOURCE = 'Outsource'
+  INTERNAL = "Internal",
+  OUTSOURCE = "Outsource",
 }
 
-export type ViewType = 'dashboard' | 'event' | 'event-detail' | 'edit-event' | 'company' | 'company-detail' | 'edit-company' | 'staff' | 'outsource' | 'equipment' | 'package' | 'create-event' | 'create-company' | 'create-staff' | 'edit-staff' | 'create-outsource' | 'edit-outsource' | 'create-equipment' | 'edit-equipment' | 'create-package' | 'edit-package';
+export type ViewType =
+  | "dashboard"
+  | "event"
+  | "event-detail"
+  | "edit-event"
+  | "company"
+  | "company-detail"
+  | "edit-company"
+  | "staff"
+  | "outsource"
+  | "equipment"
+  | "package"
+  | "create-event"
+  | "create-company"
+  | "create-staff"
+  | "edit-staff"
+  | "create-outsource"
+  | "edit-outsource"
+  | "create-equipment"
+  | "edit-equipment"
+  | "create-package"
+  | "edit-package";
 
 export interface StaffMember {
   id: string;
@@ -24,7 +43,7 @@ export interface StaffMember {
   roles: RoleType[];
   avatarUrl: string;
   isFavorite: boolean;
-  status: 'Active' | 'Offline' | 'Busy';
+  status: "Active" | "Offline" | "Busy";
   type?: StaffType;
   // New credentials fields
   username?: string;
@@ -59,12 +78,12 @@ export interface CompanyItem {
   id: string;
   companyName: string;
   contactPerson: string; // Keep for backward compatibility/list view summary
-  role: string;          // Keep for backward compatibility/list view summary
+  role: string; // Keep for backward compatibility/list view summary
   email: string;
   phone: string;
   isFavorite: boolean;
   createdAt: string;
-  
+
   // Detailed Fields
   contacts?: ClientContact[];
   address?: string;
@@ -76,13 +95,13 @@ export interface CompanyItem {
   industry?: string;
 }
 
-export type EventType = 'Online' | 'Hybrid' | 'Offline';
-export type EventStatus = 'Complete' | 'Pending';
+export type EventType = "Online" | "Hybrid" | "Offline";
+export type EventStatus = "Complete" | "Pending";
 
 export interface EventDocument {
   id?: string;
   name: string;
-  type: 'pdf' | 'xlsx' | 'docx' | 'image';
+  type: "pdf" | "xlsx" | "docx" | "image";
   size: string;
   url?: string;
 }
@@ -113,8 +132,8 @@ export interface EventItem {
   id: string;
   title: string; // Maps to EventName or derived
   date: string; // MeetingDate
-  startTime: string; 
-  endTime: string; 
+  startTime: string;
+  endTime: string;
   type: EventType;
   status: EventStatus;
   staffIds: string[];
@@ -123,13 +142,13 @@ export interface EventItem {
   description: string; // Maps to Notes
   documents: EventDocument[];
   packageId?: string;
-  
+
   // Extended fields for Detail View
   industry?: string;
   clientContacts: ClientContact[];
   staffRequirements: StaffRequirement[];
   onlineDetails?: OnlineDetails;
-  equipmentList: EventEquipmentDetail[]; 
+  equipmentList: EventEquipmentDetail[];
   note?: string;
 
   // New Fields from ER Table Events

@@ -10,12 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as StaffIndexRouteImport } from './routes/staff.index'
-import { Route as PackageIndexRouteImport } from './routes/package.index'
-import { Route as OutsourceIndexRouteImport } from './routes/outsource.index'
-import { Route as EventIndexRouteImport } from './routes/event.index'
-import { Route as CompanyIndexRouteImport } from './routes/company.index'
-import { Route as EquipmentIndexRouteImport } from './routes/Equipment.index'
+import { Route as StaffIndexRouteImport } from './routes/staff/index'
+import { Route as PackageIndexRouteImport } from './routes/package/index'
+import { Route as OutsourceIndexRouteImport } from './routes/outsource/index'
+import { Route as EventIndexRouteImport } from './routes/event/index'
+import { Route as EquipmentIndexRouteImport } from './routes/equipment/index'
+import { Route as CompanyIndexRouteImport } from './routes/company/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -42,21 +42,21 @@ const EventIndexRoute = EventIndexRouteImport.update({
   path: '/event/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EquipmentIndexRoute = EquipmentIndexRouteImport.update({
+  id: '/equipment/',
+  path: '/equipment/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompanyIndexRoute = CompanyIndexRouteImport.update({
   id: '/company/',
   path: '/company/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EquipmentIndexRoute = EquipmentIndexRouteImport.update({
-  id: '/Equipment/',
-  path: '/Equipment/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/Equipment': typeof EquipmentIndexRoute
   '/company': typeof CompanyIndexRoute
+  '/equipment': typeof EquipmentIndexRoute
   '/event': typeof EventIndexRoute
   '/outsource': typeof OutsourceIndexRoute
   '/package': typeof PackageIndexRoute
@@ -64,8 +64,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/Equipment': typeof EquipmentIndexRoute
   '/company': typeof CompanyIndexRoute
+  '/equipment': typeof EquipmentIndexRoute
   '/event': typeof EventIndexRoute
   '/outsource': typeof OutsourceIndexRoute
   '/package': typeof PackageIndexRoute
@@ -74,8 +74,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/Equipment/': typeof EquipmentIndexRoute
   '/company/': typeof CompanyIndexRoute
+  '/equipment/': typeof EquipmentIndexRoute
   '/event/': typeof EventIndexRoute
   '/outsource/': typeof OutsourceIndexRoute
   '/package/': typeof PackageIndexRoute
@@ -85,8 +85,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/Equipment'
     | '/company'
+    | '/equipment'
     | '/event'
     | '/outsource'
     | '/package'
@@ -94,8 +94,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/Equipment'
     | '/company'
+    | '/equipment'
     | '/event'
     | '/outsource'
     | '/package'
@@ -103,8 +103,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/Equipment/'
     | '/company/'
+    | '/equipment/'
     | '/event/'
     | '/outsource/'
     | '/package/'
@@ -113,8 +113,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  EquipmentIndexRoute: typeof EquipmentIndexRoute
   CompanyIndexRoute: typeof CompanyIndexRoute
+  EquipmentIndexRoute: typeof EquipmentIndexRoute
   EventIndexRoute: typeof EventIndexRoute
   OutsourceIndexRoute: typeof OutsourceIndexRoute
   PackageIndexRoute: typeof PackageIndexRoute
@@ -158,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/equipment/': {
+      id: '/equipment/'
+      path: '/equipment'
+      fullPath: '/equipment'
+      preLoaderRoute: typeof EquipmentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/company/': {
       id: '/company/'
       path: '/company'
@@ -165,20 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompanyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/Equipment/': {
-      id: '/Equipment/'
-      path: '/Equipment'
-      fullPath: '/Equipment'
-      preLoaderRoute: typeof EquipmentIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  EquipmentIndexRoute: EquipmentIndexRoute,
   CompanyIndexRoute: CompanyIndexRoute,
+  EquipmentIndexRoute: EquipmentIndexRoute,
   EventIndexRoute: EventIndexRoute,
   OutsourceIndexRoute: OutsourceIndexRoute,
   PackageIndexRoute: PackageIndexRoute,

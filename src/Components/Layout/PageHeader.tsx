@@ -1,5 +1,5 @@
-// src/Components/layout/PageHeader.tsx
-import type { ReactNode } from 'react';
+// src/components/layout/PageHeader.tsx
+import type { ReactNode } from "react";
 
 interface PageHeaderProps {
   title: string;
@@ -18,11 +18,11 @@ export function PageHeader({
   showStatusDot = true,
   actions,
 }: PageHeaderProps) {
-  const showCount = typeof count === 'number' && countLabel;
+  const showCount = typeof count === "number" && countLabel;
 
   return (
     // กรอบสี่เหลี่ยมเต็มความกว้าง แต่ไม่ขยับตำแหน่ง
-    <div className="border-b border-gray-200 bg-white">
+    <div className="border-b border-gray-200 bg-white min-h-22">
       <div className="flex items-center justify-between gap-4 px-6 py-4">
         <div className="flex-1">
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">
@@ -30,9 +30,7 @@ export function PageHeader({
           </h1>
 
           {subtitle && (
-            <p className="mt-0.5 text-sm text-gray-500">
-              {subtitle}
-            </p>
+            <p className="mt-0.5 text-sm text-gray-500">{subtitle}</p>
           )}
 
           {showCount && (
@@ -45,11 +43,7 @@ export function PageHeader({
           )}
         </div>
 
-        {actions && (
-          <div className="flex items-center gap-3">
-            {actions}
-          </div>
-        )}
+        {actions && <div className="flex items-center gap-3">{actions}</div>}
       </div>
     </div>
   );

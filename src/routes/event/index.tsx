@@ -1,13 +1,15 @@
-// src/routes/company.index.tsx
-import { createFileRoute } from '@tanstack/react-router';
-import { PageHeader } from '../Components/Layout/PageHeader';
-import { PageSection } from '../Components/Layout/PageSection';
-import { PrimaryButton } from '../Components/Ui/PrimaryButton';
-import { SearchBar } from '../Components/SearchBar';
-import { Plus } from 'lucide-react';
+import { createFileRoute } from "@tanstack/react-router";
+import { PageHeader } from "../../components/layout/PageHeader";
+import { PageSection } from "../../components/layout/PageSection";
+import { PrimaryButton } from "../../components/ui/PrimaryButton";
+import { SearchBar } from "../../components/SearchBar";
+import { Plus } from "lucide-react";
 
-export const Route = createFileRoute('/event/')({
+export const Route = createFileRoute("/event/")({
   component: CompanyListRoute,
+  staticData: {
+    title: "CompanyList",
+  },
 });
 
 function CompanyListRoute() {
@@ -37,8 +39,8 @@ function CompanyListRoute() {
       {/* กรอบ content สีขาวสำหรับ Company list */}
       <PageSection>
         <p className="text-sm text-gray-700">
-          ที่นี่คือพื้นที่ content ของ Event
-          (เดี๋ยวเราค่อยมาใส่ Card / Table จริง ๆ ต่ออีกที)
+          ที่นี่คือพื้นที่ content ของ Event (เดี๋ยวเราค่อยมาใส่ Card / Table
+          จริง ๆ ต่ออีกที)
         </p>
       </PageSection>
     </div>

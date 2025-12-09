@@ -1,5 +1,5 @@
-// src/Components/layout/PageSection.tsx
-import type { ReactNode } from 'react';
+// src/components/layout/PageSection.tsx
+import type { ReactNode } from "react";
 
 interface PageSectionProps {
   children: ReactNode;
