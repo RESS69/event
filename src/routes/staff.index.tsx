@@ -1,7 +1,10 @@
 // src/routes/staff.index.tsx
+import { useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { PageHeader } from '../Components/Layout/PageHeader';
+import { PageSection } from '../Components/Layout/PageSection';
 import { PrimaryButton } from '../Components/Ui/PrimaryButton';
+import { SearchBar } from '../Components/SearchBar';
 import { Plus } from 'lucide-react';
 
 export const Route = createFileRoute('/staff/')({
@@ -10,6 +13,8 @@ export const Route = createFileRoute('/staff/')({
 
 function StaffListRoute() {
   const totalStaff = 35;
+  const [searchText, setSearchText] = useState('');
+  
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -29,15 +34,22 @@ function StaffListRoute() {
           </PrimaryButton>
         }
       />
-
-      <div className="flex-1 overflow-auto px-6 pb-6">
-        <div className="rounded-xl bg-white p-4 shadow-sm">
-          {/* ตรงนี้จะเป็นตาราง staff จริง ๆ */}
-          <p className="text-sm text-gray-700">
-            ที่นี่คือพื้นที่ content ของ Staff list
-          </p>
-        </div>
+    <div className="px-6 pt-4 pb-2">
+        <SearchBar
+          value={searchText}
+          onChange={setSearchText}
+          placeholder="Search equipment..."
+          filterLabel="Role"
+          onFilterClick={() => {
+            console.log('open category filter');
+          }}
+        />
       </div>
-    </div>
+      <PageSection>
+              <p className="text-sm text-gray-700">
+                ที่นี่คือพื้นที่ content ของ Staff
+              </p>
+            </PageSection>
+        </div>
   );
 }

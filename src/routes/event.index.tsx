@@ -3,6 +3,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { PageHeader } from '../Components/Layout/PageHeader';
 import { PageSection } from '../Components/Layout/PageSection';
 import { PrimaryButton } from '../Components/Ui/PrimaryButton';
+import { SearchBar } from '../Components/SearchBar';
 import { Plus } from 'lucide-react';
 
 export const Route = createFileRoute('/event/')({

@@ -3,6 +3,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { PageHeader } from '../Components/Layout/PageHeader';
 import { PageSection } from '../Components/Layout/PageSection';
 import { PrimaryButton } from '../Components/Ui/PrimaryButton';
+import { SearchBar } from '../Components/SearchBar';
 import { Plus } from 'lucide-react';
 
 export const Route = createFileRoute('/package/')({
@@ -21,9 +22,9 @@ function PackageListRoute() {
         actions={
           <PrimaryButton
             leftIcon={<Plus size={18} strokeWidth={2.5} />}
-            onClick={() => {
-              console.log('go to /package/new');
-            }}
+            // onClick={() => {
+            //   console.log('go to /package/new');
+            // }}
           >
             Create Package
           </PrimaryButton>

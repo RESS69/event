@@ -3,6 +3,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { PageHeader } from '../Components/Layout/PageHeader';
 import { PageSection } from '../Components/Layout/PageSection';
 
+
 export const Route = createFileRoute('/')({
   component: DashboardRoute,
 });
