@@ -1,134 +1,112 @@
-
+// src/Components/Sidebar.tsx
 import React from 'react';
-import { 
-  LayoutDashboard, 
-  CalendarDays, 
-  Building2, 
-  Users, 
-  Briefcase, 
-  Wrench, 
-  Package
-} from 'lucide-react';
-import { ViewType } from '../types';
 
-interface SidebarProps {
-  isOpen: boolean;
-  toggleSidebar: () => void;
-  currentView: ViewType;
-  onNavigate: (view: ViewType) => void;
+export type SidebarView =
+  | 'dashboard'
+  | 'event'
+  | 'company'
+  | 'staff'
+  | 'outsource'
+  | 'equipment'
+  | 'package';
+
+export interface SidebarProps {
+  currentView: SidebarView;
+  onNavigate: (view: SidebarView) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-interface NavItemProps {
-  icon: any;
-  label: string;
-  active?: boolean;
-  onClick?: () => void;
-}
+const MENU_ITEMS: { id: SidebarView; label: string }[] = [
+  { id: 'dashboard', label: 'Dashboard' },
+  { id: 'event', label: 'Event' },
+  { id: 'company', label: 'Company' },
+  { id: 'staff', label: 'Staff' },
+  { id: 'outsource', label: 'Outsource' },
+  { id: 'equipment', label: 'Equipment' },
+  { id: 'package', label: 'Package' },
+];
 
-const NavItem = ({ icon: Icon, label, active = false, onClick }: NavItemProps) => (
-  <button 
-    onClick={onClick}
-    className={`flex items-center w-full gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${
-      active 
-        ? 'bg-blue-50 text-blue-600 font-medium shadow-sm' 
-        : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
-    }`}
-  >
-    <Icon size={20} className={active ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'} />
-    <span className="text-sm">{label}</span>
-  </button>
-);
+export const Sidebar: React.FC<SidebarProps> = ({
+  currentView,
+  onNavigate,
+  isOpen = true,
+  onClose,
+}) => {
+  if (!isOpen) return null;
 
-export const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar, currentView, onNavigate }) => {
   return (
-    <>
-      {/* Mobile Overlay */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-20 lg:hidden"
-          onClick={toggleSidebar}
-        />
-      )}
+    <aside className="hidden h-screen w-64 flex-shrink-0 flex-col border-r border-gray-200 bg-white lg:flex">
+      {/* Logo */}
+      <div className="flex items-center gap-3 border-b px-6 py-4">
+        <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-blue-600 text-sm font-semibold text-white">
+          EF
+        </div>
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold text-gray-900">
+            EventFlow
+          </span>
+          <span className="text-xs text-gray-500">Event Management</span>
+        </div>
+      </div>
 
-      {/* Sidebar Container */}
-      <aside 
-        className={`fixed lg:sticky top-0 left-0 h-screen w-72 bg-white border-r border-gray-200 z-30 transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-        } flex flex-col`}
-      >
-        <div className="p-6 border-b border-gray-100 flex items-center gap-3">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-blue-200">
-            EF
-          </div>
-          <span className="text-lg font-bold text-gray-800 tracking-tight">EventFlow</span>
+      {/* Menu */}
+      <nav className="flex-1 overflow-y-auto px-2 py-4 text-sm">
+        <div className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
+          Event Management
         </div>
 
-        <div className="flex-1 py-6 px-4 overflow-y-auto custom-scrollbar space-y-8">
-          
-          <div>
-            <h3 className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Event Management</h3>
-            <div className="space-y-1">
-              <NavItem 
-                icon={LayoutDashboard} 
-                label="Dashboard"
-                active={currentView === 'dashboard'}
-                onClick={() => onNavigate('dashboard')}
-              />
-              <NavItem 
-                icon={CalendarDays} 
-                label="Event" 
-                active={currentView === 'event'}
-                onClick={() => onNavigate('event')}
-              />
-              <NavItem 
-                icon={Building2} 
-                label="Company" 
-                active={currentView === 'company'}
-                onClick={() => onNavigate('company')}
-              />
-              
-              <NavItem 
-                icon={Users} 
-                label="Staff" 
-                active={currentView === 'staff'}
-                onClick={() => onNavigate('staff')}
-              />
-              
-              <NavItem 
-                icon={Briefcase} 
-                label="Outsource" 
-                active={currentView === 'outsource'}
-                onClick={() => onNavigate('outsource')}
-              />
-              
-              <NavItem 
-                icon={Wrench} 
-                label="Equipment" 
-                active={currentView === 'equipment'}
-                onClick={() => onNavigate('equipment')}
-              />
-              <NavItem 
-                icon={Package} 
-                label="Package" 
-                active={currentView === 'package'}
-                onClick={() => onNavigate('package')}
-              />
-            </div>
-          </div>
-
-          {/* Settings section removed as per request */}
+        <div className="space-y-1">
+          {MENU_ITEMS.map((item) => {
+            const isActive = currentView === item.id;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => onNavigate(item.id)}
+                className={[
+                  'flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left transition-colors',
+                  isActive
+                    ? 'bg-blue-50 text-blue-700 font-medium'
+                    : 'text-gray-700 hover:bg-gray-50',
+                ].join(' ')}
+              >
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-xs">
+                  {item.label[0]}
+                </span>
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
         </div>
+      </nav>
 
-        <div className="p-4 border-t border-gray-100">
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100">
-            <img src="https://picsum.photos/100/100?random=99" alt="Admin" className="w-9 h-9 rounded-full object-cover" />
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-gray-900 truncate">Admin User</p>
-              <p className="text-xs text-gray-500 truncate">admin@eventflow.com</p>
-            </div>
+      {/* โปรไฟล์ล่าง */}
+      <div className="border-t px-4 py-4">
+        <div className="flex items-center gap-3 rounded-2xl bg-gray-50 px-3 py-2">
+          <div className="h-8 w-8 rounded-full bg-gray-300" />
+          <div className="flex flex-col">
+            <span className="text-xs font-semibold text-gray-900">
+              Admin User
+            </span>
+            <span className="text-[11px] text-gray-500">
+              admin@eventflow.com
+            </span>
           </div>
         </div>
-      </aside>
-    </>
+
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            className="mt-3 w-full rounded-lg border border-gray-200 px-3 py-1.5 text-center text-xs text-gray-500 hover:bg-gray-50"
+          >
+            Close menu
+          </button>
+        )}
+      </div>
+    </aside>
   );
 };
+
+export default Sidebar;

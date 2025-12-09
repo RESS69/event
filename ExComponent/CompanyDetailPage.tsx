@@ -5,7 +5,7 @@ import {
   Phone, Clock, Info, ExternalLink, 
   User, Mail, Building2, MoreHorizontal, Trash2, Star, Edit
 } from 'lucide-react';
-import { CompanyItem, EventItem, ClientContact } from '../types';
+import { CompanyItem, EventItem, ClientContact } from '../../types';
 
 interface CompanyDetailPageProps {
   company: CompanyItem;
