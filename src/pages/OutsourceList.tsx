@@ -5,6 +5,7 @@ import { PrimaryButton } from "../components/ui/PrimaryButton";
 import { SearchBar } from "../components/SearchBar";
 import Sidebar from "../components/Sidebar";
 import { Plus } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 const OutsourceList = () => {
   const totalOutsource = 12; // mock data
@@ -20,14 +21,10 @@ const OutsourceList = () => {
           count={totalOutsource}
           countLabel="outsourced staff"
           actions={
-            <PrimaryButton
-              leftIcon={<Plus size={18} strokeWidth={2.5} />}
-              onClick={() => {
-                console.log("go to /outsource/new");
-              }}
-            >
+            <Button variant="primary" size="add">
+              <Plus size={18} strokeWidth={2.5} />
               Add Outsource
-            </PrimaryButton>
+            </Button>
           }
         />
 

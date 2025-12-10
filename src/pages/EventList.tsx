@@ -29,7 +29,7 @@ const EventList = () => {
         {/* Tabs + Status chips + Content */}
         <Tabs defaultValue="calendar" className="flex flex-1 flex-col">
           {/* แถบด้านบน: TabsList + status ด้านขวา */}
-          <div className="border-b border-gray-100 bg-slate-50 px-6 py-3">
+          <div className="px-6 pb-1 pt-6">
             <div className="flex items-center justify-between">
               {/* ซ้าย: Tabs */}
               <TabsList className="p-1">
@@ -38,7 +38,7 @@ const EventList = () => {
               </TabsList>
 
               {/* ขวา: status chips */}
-              <div className="inline-flex items-center gap-3 rounded-md border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-600">
+              <div className="inline-flex items-center gap-3 rounded-md border border-gray-100 bg-white px-3 py-1 text-xs font-medium text-gray-600 shadow-sm">
                 <span className="inline-flex items-center gap-1">
                   <span className="h-2 w-2 rounded-full bg-yellow-400" />
                   Pending
