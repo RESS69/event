@@ -2,10 +2,9 @@ import { useState } from "react";
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
 import { SearchBar } from "../components/SearchBar";
-import Button from "../components/ui/Button";
+import { Button } from "../components/ui/Button";
 import Sidebar from "../components/Sidebar";
 import { Plus } from "lucide-react";
-import PrimaryButton from "../components/ui/PrimaryButton";
 
 const StaffList = () => {
   const totalStaff = 35;
@@ -21,14 +20,10 @@ const StaffList = () => {
           count={totalStaff}
           countLabel="staff members"
           actions={
-            <PrimaryButton
-              leftIcon={<Plus size={18} strokeWidth={2.5} />}
-              onClick={() => {
-                console.log("go to /event/new");
-              }}
-            >
-              Add Staff
-            </PrimaryButton>
+            <Button variant="primary" size="add">
+              <Plus size={18} strokeWidth={2.5} />
+              Create Company
+            </Button>
           }
         />
 

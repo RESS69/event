@@ -2,7 +2,7 @@ import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
 import Sidebar from "../components/Sidebar";
 import { Plus } from "lucide-react";
-import Button from "../components/ui/Button";
+import { Button } from "@/components/ui/Button";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
 const PackageList = () => {
@@ -18,14 +18,10 @@ const PackageList = () => {
           count={totalPackages}
           countLabel="Package"
           actions={
-            <PrimaryButton
-              leftIcon={<Plus size={18} strokeWidth={2.5} />}
-              onClick={() => {
-                console.log("go to /event/new");
-              }}
-            >
-              Add Package
-            </PrimaryButton>
+            <Button variant="primary" size="add">
+              <Plus size={18} strokeWidth={2.5} />
+              Create Company
+            </Button>
           }
         />
 

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
-import { PrimaryButton } from "../components/ui/PrimaryButton";
 import { SearchBar } from "../components/SearchBar";
 import Sidebar from "../components/Sidebar";
+import { Button } from "@/components/ui/Button";
 import { Plus } from "lucide-react";
 
 const EquipmentList = () => {
@@ -20,14 +20,10 @@ const EquipmentList = () => {
           count={totalItems}
           countLabel="Equipment"
           actions={
-            <PrimaryButton
-              leftIcon={<Plus size={18} strokeWidth={2.5} />}
-              onClick={() => {
-                console.log("go to /equipment/new");
-              }}
-            >
-              Add Equipment
-            </PrimaryButton>
+            <Button variant="primary" size="add">
+              <Plus size={18} strokeWidth={2.5} />
+              Create Company
+            </Button>
           }
         />
 
