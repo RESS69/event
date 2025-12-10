@@ -1,4 +1,3 @@
-import { SidebarItem } from "./SidebarItem";
 import {
   Briefcase,
   Building2,
@@ -8,6 +7,7 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
+import { SidebarItem } from "./SidebarItem";
 
 export type SidebarView =
   | "dashboard"
@@ -50,7 +50,7 @@ export const Sidebar = () => {
       </div>
 
       {/* Menu */}
-      <nav className="flex-1 overflow-y-auto px-2 py-4 text-sm">
+      <nav className="flex-1 overflow-y-auto px-3 py-4 text-sm">
         <div className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-wide text-gray-400">
           Event Management
         </div>

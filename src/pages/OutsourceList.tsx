@@ -1,6 +1,4 @@
-// src/routes/outsource/index.tsx
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
 import { PrimaryButton } from "../components/ui/PrimaryButton";
@@ -8,14 +6,7 @@ import { SearchBar } from "../components/SearchBar";
 import Sidebar from "../components/Sidebar";
 import { Plus } from "lucide-react";
 
-export const Route = createFileRoute("/outsource")({
-  component: OutsourceListRoute,
-  staticData: {
-    title: "Outsource",
-  },
-});
-
-function OutsourceListRoute() {
+const OutsourceList = () => {
   const totalOutsource = 12; // mock data
   const [searchText, setSearchText] = useState("");
 
@@ -54,12 +45,12 @@ function OutsourceListRoute() {
 
         <PageSection>
           <p className="text-sm text-gray-700">
-            ที่นี่คือพื้นที่ content ของ Outsource list 
+            ที่นี่คือพื้นที่ content ของ Outsource list
           </p>
         </PageSection>
       </div>
     </main>
   );
-}
+};
 
-export default OutsourceListRoute;
+export default OutsourceList;

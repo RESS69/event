@@ -1,10 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import PackageListRoute from "../../pages/PackageList";
+import PackageList from "../../pages/PackageList";
 
 export const Route = createFileRoute("/package/")({
-  component: PackageListRoute,
+  component: PackageList,
   staticData: {
     title: "PackageList",
   },
 });
-

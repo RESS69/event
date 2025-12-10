@@ -1,19 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
-import { PrimaryButton } from "../components/ui/PrimaryButton";
 import Sidebar from "../components/Sidebar";
 import { Plus } from "lucide-react";
 import Button from "../components/ui/Button";
+import PrimaryButton from "../components/ui/PrimaryButton";
 
-export const Route = createFileRoute("/package/")({
-  component: PackageListRoute,
-  staticData: {
-    title: "PackageList",
-  },
-});
-
-function PackageListRoute() {
+const PackageList = () => {
   const totalPackages = 9; // mock data
 
   return (
@@ -26,11 +18,14 @@ function PackageListRoute() {
           count={totalPackages}
           countLabel="Package"
           actions={
-            <Button
-              icon={<Plus size={18} strokeWidth={2.5} />}
-              title="Add Package"
-              className="bg-blue-600 hover:bg-blue-700 shadow-blue-200"
-            />
+            <PrimaryButton
+              leftIcon={<Plus size={18} strokeWidth={2.5} />}
+              onClick={() => {
+                console.log("go to /event/new");
+              }}
+            >
+              Add Package
+            </PrimaryButton>
           }
         />
 
@@ -42,5 +37,5 @@ function PackageListRoute() {
       </div>
     </main>
   );
-}
-export default PackageListRoute;
+};
+export default PackageList;

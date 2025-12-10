@@ -1,11 +1,9 @@
-
 import { createFileRoute } from "@tanstack/react-router";
-import OutsourceListRoute from "../../pages/Outsource"
+import OutsourceList from "../../pages/OutsourceList";
 
 export const Route = createFileRoute("/outsource/")({
-  component: OutsourceListRoute,
+  component: OutsourceList,
   staticData: {
     title: "OutsourceList",
   },
 });
-

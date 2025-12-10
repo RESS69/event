@@ -11,7 +11,7 @@ export const SidebarItem = ({ to, label, icon: Icon }: SidebarItemProps) => {
   return (
     <Link
       to={to}
-      className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left transition-colors mt-1"
+      className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors mt-1"
       activeProps={() => ({
         className: "bg-blue-50 text-blue-600 font-normal",
       })}

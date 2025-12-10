@@ -1,19 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
 import { PrimaryButton } from "../components/ui/PrimaryButton";
-import { SearchBar } from "../components/SearchBar";
 import { Plus } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 
-export const Route = createFileRoute("/event/")({
-  component: EventListRoute,
-  staticData: {
-    title: "Event",
-  },
-});
-
-function EventListRoute() {
+const EventList = () => {
   // เดี๋ยวค่อยเปลี่ยนเป็นข้อมูลจริงทีหลัง
   const totalEvent = 15;
 
@@ -47,5 +38,5 @@ function EventListRoute() {
       </div>
     </main>
   );
-}
-export default EventListRoute;
+};
+export default EventList;

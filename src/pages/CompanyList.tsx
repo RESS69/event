@@ -22,7 +22,8 @@ const CompanyList = () => {
             <Button
               icon={<Plus size={18} strokeWidth={2.5} />}
               title="Create Company"
-              className="bg-blue-600 hover:bg-blue-700 shadow-blue-200"
+              // textColor="text-black"
+              // className="bg-blue-600 hover:bg-blue-700 shadow-blue-200"
             />
           }
         />
