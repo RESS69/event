@@ -54,7 +54,7 @@ function OutsourceListRoute() {
 
         <PageSection>
           <p className="text-sm text-gray-700">
-            ที่นี่คือพื้นที่ content ของ Outsource list (ค่าที่ค้นหา: "{searchText}")
+            ที่นี่คือพื้นที่ content ของ Outsource list 
           </p>
         </PageSection>
       </div>

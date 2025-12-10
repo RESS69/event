@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../Components/Layout/PageHeader";
 import { PageSection } from "../Components/Layout/PageSection";
-import { PrimaryButton } from "../Components/Ui/PrimaryButton";
+import { PrimaryButton } from "../components/ui/PrimaryButton";
 import { SearchBar } from "../Components/SearchBar";
 import { Plus } from "lucide-react";
+import Sidebar from "../Components/Sidebar";
 
 export const Route = createFileRoute("/event/")({
   component: EventListRoute,
@@ -14,28 +15,28 @@ export const Route = createFileRoute("/event/")({
 
 function EventListRoute() {
   // เดี๋ยวค่อยเปลี่ยนเป็นข้อมูลจริงทีหลัง
-  const totalCompanies = 15;
+  const totalEvent = 15;
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
-      {/* Header มีกรอบเหมือนหน้า Staff */}
-      <PageHeader
-        title="Event"
-        count={totalCompanies}
-        countLabel="Event"
-        actions={
-          <PrimaryButton
-            leftIcon={<Plus size={18} strokeWidth={2.5} />}
-            // onClick={() => {
-            //   // ไว้ค่อยต่อ /company/new ภายหลัง
-            //   console.log('go to /company/new');
-            // }}
-          >
-            Create Event
-          </PrimaryButton>
-        }
-      />
-
+    <main className="flex">
+            <Sidebar />
+      
+            <div className="flex min-h-0 flex-1 flex-col">
+              <PageHeader
+                title="Event"
+                count={totalEvent}
+                countLabel="Event"
+                actions={
+                  <PrimaryButton
+                    leftIcon={<Plus size={18} strokeWidth={2.5} />}
+                    onClick={() => {
+                      console.log("go to /event/new");
+                    }}
+                  >
+                    Create Event
+                  </PrimaryButton>
+                }
+              />
       {/* กรอบ content สีขาวสำหรับ Company list */}
       <PageSection>
         <p className="text-sm text-gray-700">
@@ -44,5 +45,7 @@ function EventListRoute() {
         </p>
       </PageSection>
     </div>
+    </main>
   );
 }
+export default EventListRoute;

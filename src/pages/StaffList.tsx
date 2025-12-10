@@ -51,7 +51,7 @@ function StaffListRoute() {
 
         <PageSection>
           <p className="text-sm text-gray-700">
-            ที่นี่คือพื้นที่ content ของ Staff (ค่าที่ค้นหา: "{searchText}")
+            ที่นี่คือพื้นที่ content ของ Staff 
           </p>
         </PageSection>
       </div>

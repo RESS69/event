@@ -34,7 +34,7 @@ function EquipmentListRoute() {
                   console.log("go to /equipment/new");
                 }}
               >
-                Add Outsource
+                Add Equipment
               </PrimaryButton>
             }
           />
@@ -53,7 +53,7 @@ function EquipmentListRoute() {
   
           <PageSection>
             <p className="text-sm text-gray-700">
-              ที่นี่คือพื้นที่ content ของ Equipment (ค่าที่ค้นหา: "{searchText}")
+              ที่นี่คือพื้นที่ content ของ Equipment 
             </p>
           </PageSection>
         </div>
