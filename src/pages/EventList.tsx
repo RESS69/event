@@ -1,4 +1,3 @@
-// src/pages/EventList.tsx (หรือ path ตามโปรเจกต์ของคุณ)
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
 import { Plus } from "lucide-react";
@@ -33,13 +32,13 @@ const EventList = () => {
           <div className="border-b border-gray-100 bg-slate-50 px-6 py-3">
             <div className="flex items-center justify-between">
               {/* ซ้าย: Tabs */}
-              <TabsList>
+              <TabsList className="p-1">
                 <TabsTab value="calendar">Calendar View</TabsTab>
                 <TabsTab value="daily">Daily View</TabsTab>
               </TabsList>
 
               {/* ขวา: status chips */}
-              <div className="inline-flex items-center gap-3 rounded-full border border-gray-200 bg-white px-4 py-1 text-xs font-medium text-gray-600">
+              <div className="inline-flex items-center gap-3 rounded-md border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-600">
                 <span className="inline-flex items-center gap-1">
                   <span className="h-2 w-2 rounded-full bg-yellow-400" />
                   Pending
@@ -56,7 +55,8 @@ const EventList = () => {
           <PageSection>
             <TabsPanel value="calendar">
               <p className="text-sm text-gray-700">
-                ตอนนี้อยู่ในโหมด <span className="font-medium">Calendar View</span>{" "}
+                ตอนนี้อยู่ในโหมด{" "}
+                <span className="font-medium">Calendar View</span>{" "}
                 (เดี๋ยวค่อยเอา calendar component มาวางตรงนี้)
               </p>
             </TabsPanel>
