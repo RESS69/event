@@ -1,10 +1,10 @@
 import { Plus } from "lucide-react";
-import PageHeader from "../components/layout/PageHeader";
-import SearchBar from "../components/SearchBar";
-import PageSection from "../components/layout/PageSection";
-import Button from "../components/ui/Button";
+import PageHeader from "../Components/Layout/PageHeader";
+import SearchBar from "../Components/SearchBar";
+import PageSection from "../Components/Layout/PageSection";
+import Button from "../Components/Ui/Button";
 import { useState } from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../Components/Sidebar";
 
 const CompanyList = () => {
   const totalCompanies = 15; // mock data
