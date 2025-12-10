@@ -89,7 +89,7 @@ export function FilterMultiSelect({
           <MultiSelectItem
             key={option.value}
             value={option.value}
-            hasDescription={option.description}
+            hasDescription={option.description ? true : false}
           >
             {/* ถ้ามี Icon */}
             {option.icon && (

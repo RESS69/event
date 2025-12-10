@@ -15,7 +15,8 @@ import {
 const staffOptions: FilterOption[] = [
   { value: "alice", label: "Alice", description: "Host" },
   { value: "bob", label: "Bob", description: "IT Support" },
-  { value: "charlie", label: "Charlie", description: "Manager" },
+  { value: "charlie", label: "Charlie" },
+  { value: "john", label: "John" },
 ];
 
 const CompanyList = () => {

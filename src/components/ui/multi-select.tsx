@@ -301,7 +301,7 @@ export function MultiSelectItem({
 }: {
   badgeLabel?: ReactNode;
   value: string;
-  hasDescription?: string;
+  hasDescription?: boolean;
 } & Omit<ComponentPropsWithoutRef<typeof CommandItem>, "value">) {
   const { toggleValue, selectedValues, onItemAdded } = useMultiSelectContext();
   const isSelected = selectedValues.has(value);
@@ -318,7 +318,7 @@ export function MultiSelectItem({
         onSelect?.(value);
       }}
       className={cn(
-        "cursor-pointer rounded-lg mx-1 transition-colors",
+        "cursor-pointer rounded-lg mx-1 transition-colors group",
         "data-[selected=true]:bg-transparent data-[selected=true]:text-inherit",
         "hover:bg-gray-200/20! hover:text-black/85!"
       )}
@@ -326,11 +326,12 @@ export function MultiSelectItem({
       {/* ส่วนสร้าง Checkbox Box */}
       <div
         className={cn(
-          "ml-1 mr-1 flex h-3.5 w-3.5 items-center justify-center rounded-[4px] border border-gray-400",
+          "ml-1 mr-1 flex h-3.5 w-3.5 items-center justify-center rounded-[4px] border border-gray-400 transition-all",
+          hasDescription && "-mt-2.5",
           isSelected
             ? "bg-primary text-primary-foreground border-0"
             : "opacity-50 [&_svg]:invisible",
-          hasDescription ? "-mt-2.5" : "mt-1"
+          !isSelected && "group-hover:border-blue-400 group-hover:opacity-100"
         )}
       >
         <CheckIcon className="h-3! w-3! text-white" />
