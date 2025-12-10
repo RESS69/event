@@ -2,9 +2,9 @@ import { Plus } from "lucide-react";
 import PageHeader from "../components/layout/PageHeader";
 import SearchBar from "../components/SearchBar";
 import PageSection from "../components/layout/PageSection";
-import Button from "../components/ui/Button";
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
+import { Button } from "@/components/ui/Button";
 
 const CompanyList = () => {
   const totalCompanies = 15; // mock data
@@ -19,12 +19,10 @@ const CompanyList = () => {
           count={totalCompanies}
           countLabel="companies"
           actions={
-            <Button
-              icon={<Plus size={18} strokeWidth={2.5} />}
-              title="Create Company"
-              // textColor="text-black"
-              // className="bg-blue-600 hover:bg-blue-700 shadow-blue-200"
-            />
+            <Button variant="primary" size="add">
+              <Plus size={18} strokeWidth={2.5} />
+              Create Company
+            </Button>
           }
         />
         <div className="px-6 pt-4 pb-2">
