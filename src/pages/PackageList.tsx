@@ -4,7 +4,7 @@ import { PageSection } from "../components/layout/PageSection";
 import { PrimaryButton } from "../components/ui/PrimaryButton";
 import Sidebar from "../components/Sidebar";
 import { Plus } from "lucide-react";
-import Button from "../Components/Ui/Button";
+import Button from "../components/ui/Button";
 
 export const Route = createFileRoute("/package/")({
   component: PackageListRoute,
@@ -34,13 +34,12 @@ function PackageListRoute() {
           }
         />
 
-
-      <PageSection>
-        <p className="text-sm text-gray-700">
-          ที่นี่คือพื้นที่ content ของ Package list
-        </p>
-      </PageSection>
-    </div>
+        <PageSection>
+          <p className="text-sm text-gray-700">
+            ที่นี่คือพื้นที่ content ของ Package list
+          </p>
+        </PageSection>
+      </div>
     </main>
   );
 }

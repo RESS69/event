@@ -1,11 +1,11 @@
 // src/routes/staff/index.tsx
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "../Components/Layout/PageHeader";
-import { PageSection } from "../Components/Layout/PageSection";
-import { SearchBar } from "../Components/SearchBar";
-import Button from "../Components/Ui/Button";
-import Sidebar from "../Components/Sidebar";
+import { PageHeader } from "../components/layout/PageHeader";
+import { PageSection } from "../components/layout/PageSection";
+import { SearchBar } from "../components/SearchBar";
+import Button from "../components/ui/Button";
+import Sidebar from "../components/Sidebar";
 import { Plus } from "lucide-react";
 
 export const Route = createFileRoute("/staff")({
@@ -51,7 +51,7 @@ function StaffListRoute() {
 
         <PageSection>
           <p className="text-sm text-gray-700">
-            ที่นี่คือพื้นที่ content ของ Staff 
+            ที่นี่คือพื้นที่ content ของ Staff
           </p>
         </PageSection>
       </div>

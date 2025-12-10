@@ -51,8 +51,8 @@ import {
   useRouterState,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import AppShell from "../Components/Layout/AppShell";
-import Sidebar from "../Components/Sidebar";
+import AppShell from "../components/layout/AppShell";
+import Sidebar from "../components/Sidebar";
 import { useEffect } from "react";
 
 function RootLayout() {
