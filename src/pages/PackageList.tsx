@@ -22,13 +22,13 @@ function PackageListRoute() {
 
       <div className="flex min-h-0 flex-1 flex-col">
         <PageHeader
-          title="Staff"
+          title="Package"
           count={totalPackages}
-          countLabel="staff members"
+          countLabel="Package"
           actions={
             <Button
               icon={<Plus size={18} strokeWidth={2.5} />}
-              title="Add Staff"
+              title="Add Package"
               className="bg-blue-600 hover:bg-blue-700 shadow-blue-200"
             />
           }
