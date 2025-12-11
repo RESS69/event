@@ -10,7 +10,7 @@ const CreateEvent = () => {
      <div className="flex min-h-0 flex-1 flex-col">
         <PageHeader
           title="Create Event"
-          countLabel="Create Event"
+          description="Fill in the details below to create a new event." 
           actions={
             <Button variant="primary" size="add">
               <Save size={18} strokeWidth={2.5} />

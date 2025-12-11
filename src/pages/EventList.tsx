@@ -1,7 +1,16 @@
-import { useNavigate } from "@tanstack/react-router";   // ✅ เพิ่มอันนี้
+import { useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import {
+  Search,
+  Plus,
+  Users,
+  Building2,
+  CalendarDays,
+  Check,
+} from "lucide-react";
+
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
-import { Plus } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import { Button } from "@/components/ui/Button";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
@@ -10,16 +19,40 @@ import {
   type FilterOption,
 } from "@/components/ui/filter-multi-select";
 
+// mock data (เปลี่ยนทีหลังได้)
 const staffOptions: FilterOption[] = [
   { value: "alice", label: "Alice", description: "Host" },
   { value: "bob", label: "Bob", description: "IT Support" },
   { value: "charlie", label: "Charlie" },
   { value: "john", label: "John" },
 ];
+
+const companyOptions: FilterOption[] = [
+  { value: "acme", label: "Acme Inc." },
+  { value: "globex", label: "Globex Corp." },
+];
+
+const eventTypeOptions: FilterOption[] = [
+  { value: "online", label: "Online" },
+  { value: "onsite", label: "On-site" },
+  { value: "webinar", label: "Webinar" },
+];
+
+const statusOptions: FilterOption[] = [
+  { value: "pending", label: "Pending" },
+  { value: "complete", label: "Complete" },
+  { value: "cancelled", label: "Cancelled" },
+];
+
 const EventList = () => {
   const totalEvent = 15;
-  const navigate = useNavigate();                       // ✅ ใช้ hook ของ TanStack
+  const navigate = useNavigate();
 
+  const [searchText, setSearchText] = useState("");
+  const [staffFilter, setStaffFilter] = useState<string[]>([]);
+  const [companyFilter, setCompanyFilter] = useState<string[]>([]);
+  const [eventTypeFilter, setEventTypeFilter] = useState<string[]>([]);
+  const [statusFilter, setStatusFilter] = useState<string[]>([]);
 
   return (
     <main className="flex">
@@ -32,10 +65,12 @@ const EventList = () => {
           count={totalEvent}
           countLabel="Event"
           actions={
-            <Button variant="primary" size="add"
+            <Button
+              variant="primary"
+              size="add"
               onClick={() =>
                 navigate({
-                  to: "/createEvent",                 // 👈 เปลี่ยนให้ตรงกับ path ที่ตั้งใน routes
+                  to: "/createEvent", // ให้ตรงกับ route ที่ตั้งไว้
                 })
               }
             >
@@ -70,6 +105,58 @@ const EventList = () => {
             </div>
           </div>
 
+          {/* 🔹 แถว Search + Filter 4 อัน แบบในรูป */}
+          <div className="px-6 pt-3 pb-2">
+            <div className="flex items-center">
+              <div className="flex w-full items-center gap-3 rounded-xl border border-gray-200 bg-white px-3 py-2 shadow-sm">
+                {/* ซ้าย: search box พื้นหลังเทาอ่อน */}
+                <div className="flex flex-1 items-center gap-2 rounded-xl bg-slate-50 px-3 py-1">
+                  <Search className="h-4 w-4 text-gray-400" />
+                  <input
+                    type="text"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    placeholder="Search events..."
+                    className="h-8 flex-1 border-none bg-transparent text-sm text-gray-900 outline-none placeholder:text-gray-400"
+                  />
+                </div>
+
+                {/* เส้นแบ่งแนวตั้ง */}
+                <div className="h-6 w-px bg-gray-200" />
+
+                {/* ปุ่ม Filters */}
+                <FilterMultiSelect
+                  title="Staff"
+                  icon={Users}
+                  options={staffOptions}
+                  selected={staffFilter}
+                  onChange={setStaffFilter}
+                />
+                <FilterMultiSelect
+                  title="Company"
+                  icon={Building2}
+                  options={companyOptions}
+                  selected={companyFilter}
+                  onChange={setCompanyFilter}
+                />
+                <FilterMultiSelect
+                  title="Event Type"
+                  icon={CalendarDays}
+                  options={eventTypeOptions}
+                  selected={eventTypeFilter}
+                  onChange={setEventTypeFilter}
+                />
+                <FilterMultiSelect
+                  title="Status"
+                  icon={Check}
+                  options={statusOptions}
+                  selected={statusFilter}
+                  onChange={setStatusFilter}
+                />
+              </div>
+            </div>
+          </div>
+
           {/* เนื้อหาแต่ละ tab */}
           <PageSection>
             <TabsPanel value="calendar">
@@ -82,7 +169,8 @@ const EventList = () => {
 
             <TabsPanel value="daily">
               <p className="text-sm text-gray-700">
-                ตอนนี้อยู่ในโหมด <span className="font-medium">Daily View</span>{" "}
+                ตอนนี้อยู่ในโหมด{" "}
+                <span className="font-medium">Daily View</span>{" "}
                 (พื้นที่สำหรับ table / list รายวัน)
               </p>
             </TabsPanel>

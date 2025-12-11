@@ -8,6 +8,8 @@ interface PageHeaderProps {
   countLabel?: string;
   showStatusDot?: boolean;
   actions?: ReactNode;
+  description?: string;    
+
 }
 
 export function PageHeader({
@@ -17,6 +19,7 @@ export function PageHeader({
   countLabel,
   showStatusDot = true,
   actions,
+  description
 }: PageHeaderProps) {
   const showCount = typeof count === "number" && countLabel;
 
@@ -41,7 +44,14 @@ export function PageHeader({
               {count} {countLabel}
             </p>
           )}
-        </div>
+          
+          {description && (
+          <p className="mt-1 text-sm text-gray-500">
+            {description}
+          </p>
+        )}
+      </div>
+        
 
         {actions && <div className="flex items-center gap-3">{actions}</div>}
       </div>
