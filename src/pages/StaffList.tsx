@@ -5,10 +5,21 @@ import { SearchBar } from "../components/SearchBar";
 import { Button } from "../components/ui/Button";
 import Sidebar from "../components/Sidebar";
 import { Plus } from "lucide-react";
+import {
+  FilterMultiSelect,
+  type FilterOption,
+} from "@/components/ui/filter-multi-select";
 
+const staffOptions: FilterOption[] = [
+  { value: "alice", label: "Alice", description: "Host" },
+  { value: "bob", label: "Bob", description: "IT Support" },
+  { value: "charlie", label: "Charlie" },
+  { value: "john", label: "John" },
+];
 const StaffList = () => {
   const totalStaff = 35;
   const [searchText, setSearchText] = useState("");
+  const [selectedStaff, setSelectedStaff] = useState<string[]>([]);
 
   return (
     <main className="flex">
@@ -28,13 +39,20 @@ const StaffList = () => {
         />
 
         <div className="px-6 pt-4 pb-2">
-          <SearchBar
-            value={searchText}
-            onChange={setSearchText}
-            placeholder="Search staff..."
-            
-          />
-        </div>
+                  <SearchBar
+                    value={searchText}
+                    onChange={setSearchText}
+                    placeholder="Search Company..."
+                    filterSlot={
+                      <FilterMultiSelect
+                        title="Company"
+                        options={staffOptions}
+                        selected={selectedStaff}
+                        onChange={setSelectedStaff}
+                      />
+                    }
+                  />
+                </div>
 
         <PageSection>
           <p className="text-sm text-gray-700">

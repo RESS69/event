@@ -15,6 +15,7 @@ import { Route as PackageIndexRouteImport } from './routes/package/index'
 import { Route as OutsourceIndexRouteImport } from './routes/outsource/index'
 import { Route as EventIndexRouteImport } from './routes/event/index'
 import { Route as EquipmentIndexRouteImport } from './routes/equipment/index'
+import { Route as CreateEventIndexRouteImport } from './routes/createEvent/index'
 import { Route as CompanyIndexRouteImport } from './routes/company/index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const EquipmentIndexRoute = EquipmentIndexRouteImport.update({
   path: '/equipment/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreateEventIndexRoute = CreateEventIndexRouteImport.update({
+  id: '/createEvent/',
+  path: '/createEvent/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompanyIndexRoute = CompanyIndexRouteImport.update({
   id: '/company/',
   path: '/company/',
@@ -56,6 +62,7 @@ const CompanyIndexRoute = CompanyIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/company': typeof CompanyIndexRoute
+  '/createEvent': typeof CreateEventIndexRoute
   '/equipment': typeof EquipmentIndexRoute
   '/event': typeof EventIndexRoute
   '/outsource': typeof OutsourceIndexRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/company': typeof CompanyIndexRoute
+  '/createEvent': typeof CreateEventIndexRoute
   '/equipment': typeof EquipmentIndexRoute
   '/event': typeof EventIndexRoute
   '/outsource': typeof OutsourceIndexRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/company/': typeof CompanyIndexRoute
+  '/createEvent/': typeof CreateEventIndexRoute
   '/equipment/': typeof EquipmentIndexRoute
   '/event/': typeof EventIndexRoute
   '/outsource/': typeof OutsourceIndexRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/company'
+    | '/createEvent'
     | '/equipment'
     | '/event'
     | '/outsource'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/company'
+    | '/createEvent'
     | '/equipment'
     | '/event'
     | '/outsource'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/company/'
+    | '/createEvent/'
     | '/equipment/'
     | '/event/'
     | '/outsource/'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CompanyIndexRoute: typeof CompanyIndexRoute
+  CreateEventIndexRoute: typeof CreateEventIndexRoute
   EquipmentIndexRoute: typeof EquipmentIndexRoute
   EventIndexRoute: typeof EventIndexRoute
   OutsourceIndexRoute: typeof OutsourceIndexRoute
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EquipmentIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/createEvent/': {
+      id: '/createEvent/'
+      path: '/createEvent'
+      fullPath: '/createEvent'
+      preLoaderRoute: typeof CreateEventIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/company/': {
       id: '/company/'
       path: '/company'
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CompanyIndexRoute: CompanyIndexRoute,
+  CreateEventIndexRoute: CreateEventIndexRoute,
   EquipmentIndexRoute: EquipmentIndexRoute,
   EventIndexRoute: EventIndexRoute,
   OutsourceIndexRoute: OutsourceIndexRoute,

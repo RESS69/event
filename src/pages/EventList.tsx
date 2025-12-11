@@ -1,12 +1,25 @@
+import { useNavigate } from "@tanstack/react-router";   // ✅ เพิ่มอันนี้
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
 import { Plus } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import { Button } from "@/components/ui/Button";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
+import {
+  FilterMultiSelect,
+  type FilterOption,
+} from "@/components/ui/filter-multi-select";
 
+const staffOptions: FilterOption[] = [
+  { value: "alice", label: "Alice", description: "Host" },
+  { value: "bob", label: "Bob", description: "IT Support" },
+  { value: "charlie", label: "Charlie" },
+  { value: "john", label: "John" },
+];
 const EventList = () => {
   const totalEvent = 15;
+  const navigate = useNavigate();                       // ✅ ใช้ hook ของ TanStack
+
 
   return (
     <main className="flex">
@@ -19,7 +32,13 @@ const EventList = () => {
           count={totalEvent}
           countLabel="Event"
           actions={
-            <Button variant="primary" size="add">
+            <Button variant="primary" size="add"
+              onClick={() =>
+                navigate({
+                  to: "/createEvent",                 // 👈 เปลี่ยนให้ตรงกับ path ที่ตั้งใน routes
+                })
+              }
+            >
               <Plus size={18} strokeWidth={2.5} />
               Create Event
             </Button>

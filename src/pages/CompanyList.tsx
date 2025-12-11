@@ -31,7 +31,7 @@ const CompanyList = () => {
           count={totalCompanies}
           countLabel="companies"
           actions={
-            <Button variant="primary" size="add">
+            <Button variant="primary" size="add" >
               <Plus size={18} strokeWidth={2.5} />
               Create Company
             </Button>
