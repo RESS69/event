@@ -37,16 +37,7 @@ export function SearchBar({
         />
       </div>
 
-      {/* ปุ่ม Filter */}
-      <button
-        type="button"
-        className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
-        onClick={onFilterClick}
-      >
-        <Filter className="h-4 w-4 text-gray-500" />
-        <span>{filterLabel}</span>
-        <span className="text-gray-400">▾</span>
-      </button>
+      
     </div>
   );
 }

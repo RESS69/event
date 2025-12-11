@@ -32,10 +32,7 @@ const StaffList = () => {
             value={searchText}
             onChange={setSearchText}
             placeholder="Search staff..."
-            filterLabel="Role"
-            onFilterClick={() => {
-              console.log("open role filter");
-            }}
+            
           />
         </div>
 

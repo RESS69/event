@@ -32,10 +32,7 @@ const EquipmentList = () => {
             value={searchText}
             onChange={setSearchText}
             placeholder="Search equipment..."
-            filterLabel="Catagory"
-            onFilterClick={() => {
-              console.log("open catagory filter");
-            }}
+           
           />
         </div>
 

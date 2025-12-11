@@ -33,10 +33,7 @@ const OutsourceList = () => {
             value={searchText}
             onChange={setSearchText}
             placeholder="Search outsource..."
-            filterLabel="Role"
-            onFilterClick={() => {
-              console.log("open role filter");
-            }}
+           
           />
         </div>
 

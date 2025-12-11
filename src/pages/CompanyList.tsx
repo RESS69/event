@@ -45,11 +45,9 @@ const CompanyList = () => {
           <SearchBar
             value={searchText}
             onChange={setSearchText}
-            placeholder="Search equipment..."
+            placeholder="Search Company..."
             filterLabel="Date Create"
-            onFilterClick={() => {
-              console.log("open category filter");
-            }}
+          
           />
         </div>
         <PageSection>
@@ -70,5 +68,5 @@ const CompanyList = () => {
     </main>
   );
 };
-
+  
 export default CompanyList;
