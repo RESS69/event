@@ -1,17 +1,15 @@
 import { Plus, Users } from "lucide-react";
-import PageHeader from "../components/layout/PageHeader";
-import SearchBar from "../components/SearchBar";
-import PageSection from "../components/layout/PageSection";
 import { useState } from "react";
+import PageHeader from "../components/layout/PageHeader";
+import PageSection from "../components/layout/PageSection";
 import Sidebar from "../components/Sidebar";
 import { Button } from "@/components/ui/Button";
-
+import SearchBar from "../components/SearchBar";
 import {
   FilterMultiSelect,
-  FilterOption,
+  type FilterOption,
 } from "@/components/ui/filter-multi-select";
 
-// mock data
 const staffOptions: FilterOption[] = [
   { value: "alice", label: "Alice", description: "Host" },
   { value: "bob", label: "Bob", description: "IT Support" },
@@ -20,11 +18,9 @@ const staffOptions: FilterOption[] = [
 ];
 
 const CompanyList = () => {
-  const totalCompanies = 15; // mock data
+  const totalCompanies = 15;
   const [searchText, setSearchText] = useState("");
   const [selectedStaff, setSelectedStaff] = useState<string[]>([]);
-
-  console.log(selectedStaff);
 
   return (
     <main className="flex">
@@ -41,32 +37,32 @@ const CompanyList = () => {
             </Button>
           }
         />
+
         <div className="px-6 pt-4 pb-2">
           <SearchBar
             value={searchText}
             onChange={setSearchText}
             placeholder="Search Company..."
-            filterLabel="Date Create"
-          
+            filterSlot={
+              <FilterMultiSelect
+                title="Company"
+                icon={Users}
+                options={staffOptions}
+                selected={selectedStaff}
+                onChange={setSelectedStaff}
+              />
+            }
           />
         </div>
+
         <PageSection>
-          <div className="flex">
-            <FilterMultiSelect
-              title="Staff"
-              icon={Users}
-              options={staffOptions}
-              selected={selectedStaff}
-              onChange={setSelectedStaff}
-            />
-          </div>
-          {/* <p className="text-sm text-gray-700">
+          <p className="text-sm text-gray-700">
             ที่นี่คือพื้นที่ content ของ Company list
-          </p> */}
+          </p>
         </PageSection>
       </div>
     </main>
   );
 };
-  
+
 export default CompanyList;
