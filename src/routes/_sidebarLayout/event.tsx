@@ -1,7 +1,7 @@
+import EventList from "@/pages/EventList";
 import { createFileRoute } from "@tanstack/react-router";
-import EventList from "../../pages/EventList";
 
-export const Route = createFileRoute("/event/")({
+export const Route = createFileRoute("/_sidebarLayout/event")({
   component: EventList,
   staticData: {
     title: "Event",

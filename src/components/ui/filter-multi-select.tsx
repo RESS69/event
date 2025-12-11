@@ -22,6 +22,7 @@ interface FilterMultiSelectProps {
   selected: string[];
   onChange: (values: string[]) => void;
   className?: string;
+  align?: "start" | "center" | "end";
 }
 
 export function FilterMultiSelect({
@@ -31,6 +32,7 @@ export function FilterMultiSelect({
   selected,
   onChange,
   className,
+  align = "start",
 }: FilterMultiSelectProps) {
   const isActive = selected.length > 0;
 
@@ -83,7 +85,7 @@ export function FilterMultiSelect({
           emptyMessage: "Not found",
           placeholder: "Search...",
         }}
-        align="start"
+        align={align}
       >
         {options.map((option) => (
           <MultiSelectItem
