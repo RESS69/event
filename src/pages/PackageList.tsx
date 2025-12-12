@@ -1,8 +1,7 @@
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
-import Sidebar from "../components/Sidebar";
 import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 const PackageList = () => {
   const totalPackages = 9; // mock data

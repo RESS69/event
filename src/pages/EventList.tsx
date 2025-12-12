@@ -11,7 +11,7 @@ import {
 
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
 import {
   FilterMultiSelect,
@@ -82,7 +82,7 @@ const EventList = () => {
         <div className="px-6 pb-1 pt-6">
           <div className="flex items-center justify-between">
             {/* ซ้าย: Tabs */}
-            <TabsList className="p-1">
+            <TabsList>
               <TabsTab value="calendar">Calendar View</TabsTab>
               <TabsTab value="daily">Daily View</TabsTab>
             </TabsList>

@@ -2,8 +2,7 @@ import { useState } from "react";
 import { PageHeader } from "../components/layout/PageHeader";
 import { PageSection } from "../components/layout/PageSection";
 import { SearchBar } from "../components/SearchBar";
-import Sidebar from "../components/Sidebar";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import {
   FilterMultiSelect,

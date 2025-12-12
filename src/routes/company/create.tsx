@@ -1,9 +1,6 @@
+import CreateEvent from "@/pages/CreateEvent";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/company/create")({
-  component: RouteComponent,
+  component: CreateEvent,
 });
-
-function RouteComponent() {
-  return <div>Hello "/company/create"!</div>;
-}

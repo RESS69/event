@@ -2,7 +2,7 @@ import { Plus, Users } from "lucide-react";
 import { useState } from "react";
 import PageHeader from "../components/layout/PageHeader";
 import PageSection from "../components/layout/PageSection";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import SearchBar from "../components/SearchBar";
 import {
   FilterMultiSelect,

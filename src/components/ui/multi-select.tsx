@@ -1,6 +1,6 @@
 import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -326,7 +326,7 @@ export function MultiSelectItem({
       {/* ส่วนสร้าง Checkbox Box */}
       <div
         className={cn(
-          "ml-1 mr-1 flex h-3.5 w-3.5 items-center justify-center rounded-[4px] border border-gray-400 transition-all",
+          "ml-1 mr-1 flex h-3.5 w-3.5 items-center justify-center rounded-md border border-gray-400 transition-all",
           hasDescription && "-mt-2.5",
           isSelected
             ? "bg-primary text-primary-foreground border-0"
